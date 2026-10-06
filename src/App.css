@@ -1,0 +1,649 @@
+/* =========================
+   GLOBAL STYLES
+========================= */
+
+* {
+    box-sizing: border-box;
+}
+
+:root {
+    --bg: #f6f9fc;
+    --surface: #ffffff;
+    --surface-soft: #f8fbff;
+
+    --text: #111827;
+    --muted: #6b7280;
+
+    --border: #e5eaf0;
+    --border-blue: #bfdbfe;
+
+    --primary: #2563eb;
+    --primary-dark: #1d4ed8;
+    --primary-light: #eff6ff;
+
+    --shadow-sm: 0 4px 16px rgba(15, 23, 42, 0.06);
+    --shadow-md: 0 12px 30px rgba(15, 23, 42, 0.10);
+    --shadow-blue: 0 14px 30px rgba(37, 99, 235, 0.14);
+
+    --radius: 18px;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+
+    font-family:
+        Inter,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        Roboto,
+        Arial,
+        sans-serif;
+
+    background:
+        linear-gradient(
+            180deg,
+            #ffffff 0%,
+            #f8fafc 45%,
+            #f3f7fc 100%
+        );
+
+    color: var(--text);
+}
+
+
+/* =========================
+   MAIN CONTAINER
+========================= */
+
+main {
+    min-height: 100vh;
+
+    padding: 55px 24px 70px;
+
+    text-align: center;
+}
+
+
+/* =========================
+   HEADER
+========================= */
+
+.header {
+    max-width: 700px;
+
+    margin: 0 auto;
+}
+
+.header h1 {
+    margin: 0;
+
+    font-size: clamp(34px, 5vw, 52px);
+
+    font-weight: 800;
+
+    letter-spacing: -1.8px;
+
+    line-height: 1.1;
+
+    color: #111827;
+}
+
+.header p {
+    margin: 14px auto 0;
+
+    max-width: 550px;
+
+    color: var(--muted);
+
+    font-size: 16px;
+
+    line-height: 1.7;
+}
+
+
+/* =========================
+   SCORE BOARD
+========================= */
+
+.score-board {
+    display: flex;
+
+    justify-content: center;
+
+    align-items: stretch;
+
+    gap: 18px;
+
+    margin: 35px auto 40px;
+
+    max-width: 420px;
+}
+
+.score-board div {
+    position: relative;
+
+    flex: 1;
+
+    min-width: 145px;
+
+    padding: 18px 22px;
+
+    background: var(--surface);
+
+    border: 1px solid var(--border);
+
+    border-radius: var(--radius);
+
+    box-shadow: var(--shadow-sm);
+
+    overflow: hidden;
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease,
+        border-color 0.2s ease;
+}
+
+/* Blue top accent */
+.score-board div::before {
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 3px;
+
+    background: var(--primary);
+}
+
+.score-board div:hover {
+    transform: translateY(-4px);
+
+    border-color: var(--border-blue);
+
+    box-shadow: var(--shadow-blue);
+}
+
+.score-board span {
+    display: block;
+
+    margin-bottom: 7px;
+
+    color: var(--muted);
+
+    font-size: 13px;
+
+    font-weight: 600;
+
+    text-transform: uppercase;
+
+    letter-spacing: 0.8px;
+}
+
+.score-board strong {
+    display: block;
+
+    font-size: 28px;
+
+    font-weight: 800;
+
+    color: var(--primary);
+}
+
+
+/* =========================
+   CARD GRID
+========================= */
+
+.card-grid {
+    width: 100%;
+
+    max-width: 950px;
+
+    margin: 0 auto;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, minmax(0, 1fr));
+
+    gap: 22px;
+}
+
+
+/* =========================
+   CARD
+========================= */
+
+.card {
+    position: relative;
+
+    border: 1px solid var(--border);
+
+    background: var(--surface);
+
+    border-radius: var(--radius);
+
+    padding: 22px 18px 20px;
+
+    min-height: 220px;
+
+    cursor: pointer;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+    overflow: hidden;
+
+    box-shadow: var(--shadow-sm);
+
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease,
+        border-color 0.25s ease,
+        background 0.25s ease;
+}
+
+
+/* =========================
+   CARD BLUE TOP LINE
+========================= */
+
+.card::before {
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 4px;
+
+    background: var(--primary);
+
+    transform: scaleX(0);
+
+    transform-origin: center;
+
+    transition: transform 0.25s ease;
+}
+
+
+/* =========================
+   CARD HOVER
+========================= */
+
+.card:hover {
+    transform: translateY(-8px);
+
+    border-color: var(--border-blue);
+
+    background: #ffffff;
+
+    box-shadow: var(--shadow-blue);
+}
+
+.card:hover::before {
+    transform: scaleX(1);
+}
+
+
+/* =========================
+   CARD IMAGE
+========================= */
+
+.card img {
+    width: 135px;
+
+    height: 135px;
+
+    object-fit: contain;
+
+    display: block;
+
+    margin-bottom: 12px;
+
+    transition:
+        transform 0.3s ease,
+        filter 0.3s ease;
+}
+
+.card:hover img {
+    transform: scale(1.08);
+
+    filter:
+        drop-shadow(
+            0 8px 14px rgba(37, 99, 235, 0.16)
+        );
+}
+
+
+/* =========================
+   CARD TITLE
+========================= */
+
+.card h3 {
+    margin: 5px 0 0;
+
+    font-size: 17px;
+
+    font-weight: 700;
+
+    letter-spacing: -0.2px;
+
+    text-transform: capitalize;
+
+    color: #1f2937;
+
+    transition: color 0.2s ease;
+}
+
+.card:hover h3 {
+    color: var(--primary);
+}
+
+
+/* =========================
+   GAME MESSAGE
+========================= */
+
+.game-message {
+    margin: 35px auto 0;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    gap: 16px;
+}
+
+.game-message h2 {
+    margin: 0;
+
+    font-size: 26px;
+
+    font-weight: 750;
+
+    letter-spacing: -0.5px;
+
+    color: var(--text);
+}
+
+.game-message p {
+    margin: 0;
+
+    color: var(--muted);
+
+    font-size: 15px;
+}
+
+
+/* =========================
+   BUTTON
+========================= */
+
+.game-message button {
+    border: none;
+
+    padding: 13px 28px;
+
+    border-radius: 10px;
+
+    cursor: pointer;
+
+    background: var(--primary);
+
+    color: #ffffff;
+
+    font-size: 15px;
+
+    font-weight: 600;
+
+    letter-spacing: 0.1px;
+
+    box-shadow:
+        0 6px 18px rgba(37, 99, 235, 0.22);
+
+    transition:
+        transform 0.2s ease,
+        background 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.game-message button:hover {
+    background: var(--primary-dark);
+
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 10px 24px rgba(37, 99, 235, 0.28);
+}
+
+.game-message button:active {
+    transform: translateY(0);
+}
+
+
+/* =========================
+   LOADING
+========================= */
+
+.loading {
+    min-height: 100vh;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    flex-direction: column;
+
+    gap: 15px;
+
+    color: var(--muted);
+
+    font-size: 16px;
+}
+
+.loading::after {
+    content: "";
+
+    width: 30px;
+
+    height: 30px;
+
+    border: 3px solid #dbeafe;
+
+    border-top-color: var(--primary);
+
+    border-radius: 50%;
+
+    animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+
+/* =========================
+   FOCUS ACCESSIBILITY
+========================= */
+
+.card:focus-visible,
+.game-message button:focus-visible {
+    outline: 3px solid #93c5fd;
+
+    outline-offset: 4px;
+}
+
+
+/* =========================
+   TABLET
+========================= */
+
+@media (max-width: 850px) {
+
+    main {
+        padding: 45px 20px 60px;
+    }
+
+    .card-grid {
+        grid-template-columns:
+            repeat(3, minmax(0, 1fr));
+
+        gap: 18px;
+    }
+
+    .card {
+        min-height: 205px;
+    }
+
+    .card img {
+        width: 115px;
+
+        height: 115px;
+    }
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 600px) {
+
+    main {
+        padding: 35px 16px 50px;
+    }
+
+    .header h1 {
+        font-size: 34px;
+
+        letter-spacing: -1.2px;
+    }
+
+    .header p {
+        font-size: 14px;
+
+        line-height: 1.6;
+    }
+
+    .score-board {
+        gap: 12px;
+
+        margin: 28px auto 30px;
+
+        max-width: 360px;
+    }
+
+    .score-board div {
+        min-width: 0;
+
+        padding: 15px 12px;
+
+        border-radius: 14px;
+    }
+
+    .score-board span {
+        font-size: 11px;
+    }
+
+    .score-board strong {
+        font-size: 24px;
+    }
+
+    .card-grid {
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+
+        gap: 14px;
+    }
+
+    .card {
+        min-height: 190px;
+
+        padding: 16px 10px;
+
+        border-radius: 15px;
+    }
+
+    .card img {
+        width: 95px;
+
+        height: 95px;
+
+        margin-bottom: 8px;
+    }
+
+    .card h3 {
+        font-size: 15px;
+    }
+
+    .game-message {
+        margin-top: 28px;
+    }
+
+    .game-message h2 {
+        font-size: 22px;
+    }
+}
+
+
+/* =========================
+   SMALL PHONES
+========================= */
+
+@media (max-width: 380px) {
+
+    .header h1 {
+        font-size: 30px;
+    }
+
+    .score-board {
+        gap: 8px;
+    }
+
+    .score-board div {
+        padding: 13px 8px;
+    }
+
+    .card-grid {
+        gap: 10px;
+    }
+
+    .card {
+        min-height: 170px;
+
+        padding: 12px 8px;
+    }
+
+    .card img {
+        width: 80px;
+
+        height: 80px;
+    }
+
+    .card h3 {
+        font-size: 14px;
+    }
+}
